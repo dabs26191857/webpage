@@ -1,0 +1,405 @@
+/* 字體與整體設定 */
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  line-height: 1.6;
+  color: #0a0a0a;
+  
+}
+/* 導覽列 */
+.menu {
+  background-color: rgb(80, 206, 238);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  
+}
+
+.menu > li {
+  position: relative;
+  margin: right 30px;
+
+  
+}
+
+.menu a {
+  text-decoration: underline;  
+  padding-top: 40px; 
+  padding-left: 30px;
+  display: block;
+  color: white;
+  font-size: 2rem;  
+  font-weight: bold;
+}
+/* --- 漢堡按鈕 --- */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+/* --- RWD 手機版 --- */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;               /* 預設隱藏 */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgb(80, 206, 238);
+    border-radius: 10px;
+    padding: 10px 0;
+  }
+
+  nav ul.show {
+    display: flex;               /* 點開時顯示 */
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    display: block;              /* 手機版才出現漢堡圖示 */
+  }
+}
+
+.logo {
+    height: 100px;        /* logo 高度可依實際需要調整 */
+    
+}    
+
+
+/* 標頭區 */
+header {
+  background: rgb(80, 206, 238);
+  padding: none;
+  text-align: center;
+ 
+}
+/* logo 與公司名稱並排 */
+.header-container {
+  display: flex;  
+  justify-content: center; /* 置中 */
+  flex-wrap: wrap;         /* 手機時自動換行 */
+}
+header h1 {
+  margin: 0;
+  font-size: 4rem;
+  color: blue;
+  white-space: nowrap;
+}
+
+header p {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+    nav ul {
+      display: inline;
+      justify-content: center;
+      padding: 0;
+    }
+
+
+    nav ul li {
+      margin: 0 1rem;
+      white-space: nowrap;     /* 防止文字換行 */
+
+    }
+
+    nav ul li a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+   nav ul li a:hover{
+    color: #ffd700;           /* 滑鼠移上去變金色 */
+   }
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  font-size: 1.5rem;
+}
+
+.services, .portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  font-size: 1.5rem;
+ }
+
+/* 下拉選單 */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* 在主選單下方 */
+  left: 0;
+  background-color:rgb(80, 206, 238) ;
+  min-width: 300px;
+  list-style: none;
+
+  z-index: 1000;
+}
+
+
+.dropdown-content li a {
+  padding: 10px;
+  color:white ;
+  display: block;
+}
+
+
+/* 滑鼠移上去顯示 */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*大圖輪播*/
+
+.slideshow-container {
+  position: relative;
+  
+  max-width: 1500px;
+  height: 800px;
+  margin: auto;overflow: hidden;    /* 隱藏超出範圍的部分 */
+  background: #000;    /* 避免有空白時露出背景 */
+}
+/* 每一張輪播圖片 */
+.mySlides {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 填滿容器，保持比例裁切 */
+  vertical-align: middle;
+}
+
+/* 上一張 下一張按鈕 */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* 點點 */
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.active, .dot:hover {
+  --color: #717171;
+}
+/*end大圖輪播*/
+
+/*圖片*/
+.img {
+  position: relative;
+ 
+  max-width: 1200px;
+  height: 800px;
+  margin: auto;
+}
+/*end圖片*/
+
+/* 各區塊 */
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 卡片樣式 */
+.services,
+.portfolio {
+  display: grid ;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+  overflow: visible; /* 讓放大的圖片不被卡片邊緣擋住 */
+}
+.card {
+  overflow: visible;
+  position: relative;   /* 必須要有，否則 z-index 無效 */
+  background: rgb(80, 206, 238);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  z-index: 0;
+}
+.card:hover {
+  z-index:10;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  
+  
+  
+}
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+  transition: transform 0.4s ease, border 0.4s ease;/*動畫過度。transition使放大過程平滑*/
+  border: 4px solid transparent; /* 預設邊框透明 */  
+}
+.card:hover img {
+  transform: scale(2);
+  border: 4px solid #fff; /* 可改為其他顏色 */
+  
+}
+
+
+ /* 滑入動畫效果 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hero{
+  /* 讓區塊本身有高度，背景圖不會影響卡片 */
+  max-width: 1400px;
+  height: 500px;          /* 依需求調整 */
+  background-image: url('images/地下道合照.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* 聯絡資訊 */
+#contact ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+#contact ul li {
+  margin: 0.5rem 0;
+}
+
+/* 頁尾 */
+footer {
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+/* 回頂端*/
+#topBtn{
+    display: none;   /*預設隱藏*/
+    position:fixed;
+    bottom:40px;    /*離底部的距離*/
+    right:40px;     /*離右邊界的距離*/
+    z-index:99;/*top圖案高於其他item*/
+    font-size: 20px; /*字體大小*/
+    border: none;  
+    background-color: rgba(128, 128, 128, 0.518);
+    color:white ;
+    cursor:pointer;
+    padding: 15px 20px;/*设置元素所有四条边的内边距区域。*/
+    border-radius: 50%; /*4角弧度*/
+    transition: opacity 0.3s, transform 0.3s;
+
+}
+
+#topBtn:hover {
+  background-color: yellow;
+  transform: scale(1.1);
+  color: rgb(92, 193, 233);   /* 讓 hover 更清楚 */
+
+}
+.container { 
+  width: 100%;
+}
+
+.my-collapse {
+	width: 100%; height: 6rem; padding-left: 15px; text-align: start; border: none;
+}
+.my-collapse__items {
+  display: none; opacity: 0; transition: opacity 0.3s ease;
+ 
+}
+
+.my-collapse__items.show {
+  display: block;
+  opacity: 1;
+}
+
+/* 按鈕可加點樣式讓它像可展開 */
+button.my-collapse {
+  width: 100%;
+  background: #f2f2f2;
+  border: none;
+  padding: 10px 15px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 30px;
+  position: relative;
+  transition: background 0.3s;
+}
+button.my-collapse:hover {
+  background: rgba(92, 193, 233, 0.885);
+}
+/* 右側箭頭圖示 */
+button.my-collapse::after {
+  content: "+";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+}
+
+.center {
+     display: block;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+.img-center {
+  text-align: center;
+}
+
+.img-center img {
+  width: 30%;
+  margin: 0 10px;
+  vertical-align: middle;
+}
