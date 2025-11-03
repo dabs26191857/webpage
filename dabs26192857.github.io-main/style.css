@@ -7,6 +7,7 @@ body {
   line-height: 1.6;
   color: #0a0a0a;
   overflow-x: hidden; /* 🔴 修改：防止手機橫向捲動 */
+  
 }
 
 
@@ -231,11 +232,12 @@ header, nav {
   font-size: 1.2rem;
 }
 
-/* 各區塊 */
+/*網頁<p>字型大小 */
 section {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: auto;
+  font-size: 1.5rem;
 }
 
 section h2 {
