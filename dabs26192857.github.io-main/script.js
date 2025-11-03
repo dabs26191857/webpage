@@ -1,5 +1,4 @@
-
-// 取得所有 dropdown 按鈕
+// 🟦【下拉選單（舊式 collapse 用）】=========================
 let dropdowns = document.querySelectorAll(".dropdown-btn");
 
 dropdowns.forEach(function(btn) {
@@ -10,7 +9,7 @@ dropdowns.forEach(function(btn) {
   });
 });
 
-// ==================== 大圖輪播 ====================
+// 🟦【大圖輪播】==============================================
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -26,7 +25,7 @@ function showSlides(n) {
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
 
-  // 🧩 防呆：若本頁沒有輪播圖片，直接跳出
+  // 🟨 防呆：若頁面沒有輪播圖，直接結束
   if (slides.length === 0) return;
 
   if (n > slides.length) { slideIndex = 1; }
@@ -43,12 +42,12 @@ function showSlides(n) {
   if (dots[slideIndex - 1]) dots[slideIndex - 1].className += " active";
 }
 
-// ✅ 只有在頁面有 mySlides 時才啟動自動輪播
+// 🟨 自動輪播，每5秒切換
 if (document.getElementsByClassName("mySlides").length > 0) {
-  setInterval(() => { plusSlides(1); }, 5000); // 每5秒自動切換
+  setInterval(() => { plusSlides(1); }, 5000);
 }
 
-// ==================== 滾動動畫 ====================
+// 🟦【滾動進場動畫】==========================================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -62,7 +61,7 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
   observer.observe(el);
 });
 
-// ==================== 回到頂端按鈕 ====================
+// 🟦【回到頂端按鈕】===========================================
 let topBtn = document.getElementById("topBtn");
 
 window.onscroll = function() {
@@ -80,15 +79,39 @@ function topFunction() {
   });
 }
 
-// ==================== 收合區塊 (collapse) ====================
+// 🟦【收合區塊 (collapse)】====================================
 let btn = document.getElementsByClassName("my-collapse");
 for (let i = 0; i < btn.length; i++) {
   btn[i].addEventListener("click", function() {
-
-    this.nextElementSibling.classList.toggle("show");//🔸 控制內容展開
+    this.nextElementSibling.classList.toggle("show"); // 🔸 控制內容展開
   });
 }
+
+// 🟦【🟥 手機版選單控制】======================================
 function toggleMenu() {
   const navList = document.querySelector("nav ul");
-  navList.classList.toggle("show");
+  navList.classList.toggle("show"); // 🟥 點擊漢堡鈕 → 顯示/隱藏選單
 }
+
+// 🟥 手機下拉選單：點擊展開子項
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownLinks = document.querySelectorAll(".dropdown > a");
+
+  dropdownLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      if (window.innerWidth <= 768) { // 🟥 只在手機時啟動
+        e.preventDefault(); // 阻止連結直接跳頁
+        const dropdownContent = link.nextElementSibling;
+        dropdownContent.classList.toggle("show"); // 展開或收合
+      }
+    });
+  });
+});
+
+// 🟥 視窗放大時自動關閉手機選單
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    const navList = document.querySelector("nav ul");
+    if (navList) navList.classList.remove("show");
+  }
+});
